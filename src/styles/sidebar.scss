@@ -1,0 +1,135 @@
+@import 'variables';
+@import 'mixins';
+
+.categories {
+    display: flex;
+    position: relative;
+    left: -10rem;
+    height: 44.375rem;
+    width: 26rem;
+    background-color: $sidebar-color;
+    font-size: 0.75rem;
+    font-weight: 500;
+
+    &__toggle {
+        @include button;
+        display: none;
+        
+
+        &:focus {
+            outline: none;
+        }
+
+        &::after {
+            content: '∨';
+            font-size: 1rem;
+            position: absolute;
+            transition: transform 0.3s ease;
+            padding: 0 0.5rem;
+            transform: translateY(-35%);
+            transition: transform 0.3s ease;
+        }
+
+        &[aria-expanded="true"]::after {
+            transform: rotate(-180deg) translateY(35%);
+        }
+    }
+
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.4375rem;
+        margin-top: 2.8125rem;
+        margin-left: 9.875rem;
+        margin-bottom: 5.0625rem;
+        padding: 0;
+        list-style-type: none;
+
+        @media (width < 1440px) {
+            margin-left: 8rem;
+        }
+
+        &__item {
+            position: relative;
+            cursor: pointer;
+
+            &:hover {
+                color: $base-black;
+                font-size: 1rem;
+                font-weight: 700;
+            }
+
+            .categories__link {
+                color: $base-black;
+                text-decoration: none;
+            }
+
+            &.active {
+                font-size: 1rem;
+                color: $base-black;
+                font-weight: 700;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    width: 0.375rem;
+                    height: 0.375rem;
+                    top: 50%;
+                    left: -0.875rem;
+                    transform: translateY(-50%);
+                    border-radius: 50%;
+                    background: $base-violet;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 1200px) {
+        position: relative;
+        left: 0;
+        width: 100%;
+        height: auto;
+        
+        &__list {
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 1rem 1rem;
+            gap: 2rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        background-color: transparent;
+        justify-content: center;
+
+        &__toggle {
+            display: block;
+
+            &:hover {
+                @include button-hover;
+            }
+        }
+
+        .dropdown-visible {
+            display: flex;
+        }
+
+        &__list {
+            display: none;
+            position: absolute;
+            width: 100%;
+            top: 1.875rem;
+            background-color: $sidebar-color;
+            z-index: 1;
+            padding: 1rem;
+            gap: 1rem 2rem;
+            
+            &__item {
+                padding: 0.5rem 0;
+            }
+        }
+    }
+}
+
+

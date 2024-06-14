@@ -1,0 +1,56 @@
+@import 'variables';
+
+@mixin header__nav__link {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.625rem;
+    line-height: 0.75rem;
+    color: $base-gray;
+}
+
+@mixin button {
+    border: 1px solid $base-violet;
+    text-transform: uppercase;
+    color: $base-violet;
+    background-color: transparent;
+    font-size: 0.5rem;
+    font-weight: 700;
+    padding: 1.125rem 4.0625rem;
+    cursor: pointer;
+}
+
+@mixin button-hover {
+    border: 1px solid $button-active-color;
+    transition: border 0.6s;
+}
+
+@mixin promo-stikers {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 0.25rem;
+    box-shadow: 0px 0.625rem 1.25rem 0px #D5D4DC;
+    transition: filter 200ms linear, transform 200ms linear;
+    cursor: pointer;
+
+    &:hover {
+        transform: scale(1.05);
+    }
+
+    .promo-stikers__text {
+        text-transform: uppercase;
+        text-decoration: none;
+        color: $base-black;
+        font-weight: 700;
+        font-size: 1.125rem;
+        margin: 0;
+        padding: 0 1.25rem;
+    }
+
+    .promo__arrow {
+        width: 3.4375rem;
+        height: 0.75rem;
+        padding-left: 1.25rem;
+        padding-bottom: 1.25rem;
+    }
+}

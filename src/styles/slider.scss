@@ -1,0 +1,95 @@
+@import 'variables';
+@import 'mixins';
+
+.main__slider {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    
+    .slider__box {
+        position: relative;
+        height: 43.875rem;
+    
+        .slider__image {
+            height: 100%;
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            object-fit: fill;
+            cursor: pointer;
+    
+            @media (max-width: 1440px) {
+                width: 100%;
+            }
+    
+            &.fade-out {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            &.fade-in {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    
+        @media (max-width: 768px) {
+            height: auto;
+        }
+    }
+    
+    .slider__promo-stikers {
+        display: flex;
+        justify-content: flex-end;
+    }
+    
+    .promo-stikers__first, .promo-stikers__second {
+        @include promo-stikers();
+        position: absolute;
+        background-color: #9e98dc;
+    
+        @media (width < 1440px) {
+            display: none;
+        }
+    }
+    
+    .promo-stikers__first {
+        top: 4.9375rem;
+        right: -5rem;
+        width: 9.3125rem;
+        height: 13rem;
+        background-color: #9e98dc;
+    }
+    
+    .promo-stikers__second {
+        top: 22.5rem;
+        right: -9.875rem;
+        width: 8.5625rem;
+        height: 17.0625rem;
+        background-color: #ff8fe6;
+    }
+    
+    .slider__dots {
+        display: flex;
+        justify-content: center;
+        gap: 0.625rem;
+        margin-top: 1.0625rem;
+    
+        .dot {
+            cursor: pointer;
+            background-color: #EFEEF6;
+            border-radius: 50%;
+            height: 0.75rem;
+            width: 0.75rem;
+            transition: .4s;
+    
+            &:hover, &.active {
+                background-color: #9E98DC;
+                opacity: .8;
+                transform: scale(1.2);
+            }
+        }
+    
+        @media (max-width: 768px) {
+            margin-top: 0.5rem;
+        }
+    }
+}
